@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit colors="true" bootstrap="./env.php" printerClass="Sempro\PHPUnitPrettyPrinter\PrettyPrinterForPhpUnit9">
+    <testsuites>
+        <testsuite name="Unitarios">
+            <directory>src</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

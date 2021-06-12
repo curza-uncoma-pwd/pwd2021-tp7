@@ -1,0 +1,25 @@
+name: Flujo de trabajo de GitHub Classroom
+
+on: [push]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-20.04
+    if: "!contains(github.event.head_commit.message, 'ci-skip')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+      - name: Install dependencies
+        uses: php-actions/composer@v5
+        with:
+          dev: yes
+          version: 2
+          php_version: 8.0
+          ssh_key: ${{ secrets.SSH_KEY }}
+          ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
+      - uses: education/autograding@v1

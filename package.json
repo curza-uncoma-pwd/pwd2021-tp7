@@ -1,0 +1,11 @@
+{
+  "name": "@pwd2021/tp7-dao",
+  "version": "1.0.0",
+  "description": "Curza: PWD2021 - TP7 DAO",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@prettier/plugin-php": "git://github.com/shufo/plugin-php.git#a18627e03748ee5dd0218b7685a6564672f6c3e7",
+    "prettier": "^2.3.1"
+  }
+}

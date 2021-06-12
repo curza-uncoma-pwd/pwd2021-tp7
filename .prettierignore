@@ -1,0 +1,30 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# Type definitions
+flow-typed/npm
+
+# dependencies
+node_modules
+vendor
+
+.*cache
+.*loader
+.*ignore
+.*config
+.git*
+*.styl
+*.png
+*.svg
+*.lock
+*.txt
+.env*
+Procfile
+
+# testing
+coverage
+__snapshots__
+storybook-static
+
+# production
+temp
+lib

@@ -1,0 +1,14 @@
+{
+  "php.validate.enable": false,
+  "php.suggest.basic": false,
+  "editor.formatOnSave": true,
+  "intelephense.format.enable": false,
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  "[php]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
