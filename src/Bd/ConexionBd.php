@@ -81,7 +81,7 @@ final class ConexionBd
   {
     if (is_null(static::$conexion)) {
       static::$conexion = new \PDO(
-        "mysql:host=127.0.0.1;dbname={$_ENV['DB_NAME']};charset=utf8mb4",
+        "mysql:host=localhost;dbname={$_ENV['DB_NAME']};charset=utf8mb4",
         $_ENV['DB_USER'],
         $_ENV['DB_PASS'],
         [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION],

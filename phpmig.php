@@ -10,10 +10,10 @@ $container = new Container();
 $container['db'] = function () {
   $dbName = $_ENV['DB_NAME'];
   $dbh = new PDO(
-    "mysql:dbname=$dbName;host=127.0.0.1;charset=utf8mb4",
+    "mysql:host=localhost;dbname=$dbName;charset=utf8mb4",
     $_ENV['DB_USER'],
     $_ENV['DB_PASS'],
-    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
   );
 
   return $dbh;

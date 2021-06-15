@@ -4,17 +4,17 @@ on: [push]
 
 jobs:
   build:
-    name: Autograding
+    name: Autograduación
     runs-on: ubuntu-20.04
     if: "!contains(github.event.head_commit.message, 'ci-skip')"
     steps:
       - uses: actions/checkout@v2
-      - name: Cache Composer dependencies
+      - name: Configura caché para composer
         uses: actions/cache@v2
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-      - name: Install dependencies
+      - name: Instala dependencias
         uses: php-actions/composer@v5
         with:
           dev: yes
@@ -22,4 +22,18 @@ jobs:
           php_version: 8.0
           ssh_key: ${{ secrets.SSH_KEY }}
           ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
+      - name: Configura base de datos
+        uses: getong/mariadb-action@v1.1
+        with:
+          character set server: 'utf8mb4' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
+          collation server: 'utf8mb4_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
+          mysql database: ${{ secrets.DB_NAME }} # Optional, default value is "test". The specified database which will be create
+          mysql user: ${{ secrets.DB_USER }} # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+          mysql password: ${{ secrets.DB_PASS }} # Required if "mysql user" exists. The password for the "mysql user"
+      - name: Construye el archivo env
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DB_NAME: ${{ secrets.DB_NAME }}
+          envkey_DB_USER: ${{ secrets.DB_USER }}
+          envkey_DB_PASS: ${{ secrets.DB_PASS }}
       - uses: education/autograding@v1
