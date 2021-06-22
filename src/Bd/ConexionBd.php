@@ -17,8 +17,8 @@ final class ConexionBd
   /**
    * Ejemplo de uso:
    * ```php
-   * static::escribir(
-   *   sql: "SELECT * FROM jugadores",
+   * ConexionBd::escribir(
+   *   sql: "INSERT INTO `jugadores` VALUES (/* lista de valores /)",
    *   // Opcional
    *   params: [],
    * )
@@ -81,7 +81,7 @@ final class ConexionBd
   {
     if (is_null(static::$conexion)) {
       static::$conexion = new \PDO(
-        "mysql:host=localhost;dbname={$_ENV['DB_NAME']};charset=utf8mb4",
+        "mysql:dbname={$_ENV['DB_NAME']};host=127.0.0.1;charset=utf8mb4",
         $_ENV['DB_USER'],
         $_ENV['DB_PASS'],
         [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION],

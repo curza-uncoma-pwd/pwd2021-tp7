@@ -2,6 +2,24 @@
 
 > Volver al [**Documento inicial**](README.md).
 
+## Operaciones útiles de SQL
+
+### Formatear una fecha para que sea ISO-8601 válida
+
+Esto es necesario porque sino la clase `Brick\DateTime\LocalDateTime`, al intentar parsear el dato de la fecha, fallará.
+
+```sql
+DATE_FORMAT(ingreso, '%Y-%m-%dT%T') t.col
+```
+
+Ejemplo:
+
+```sql
+SELECT t.*, DATE_FORMAT(ingreso, '%Y-%m-%dT%T') col
+FROM mi_tabla t
+WHERE
+```
+
 ## Comandos útiles
 
 Todos deben correrse en una consola en la carpeta raíz de este proyecto.

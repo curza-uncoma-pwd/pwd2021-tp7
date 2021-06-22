@@ -49,6 +49,7 @@ Todas las recomendaciones para manejar el trabajo las pueden encontrar en el arc
 
 - Actualizar la clase **Jugador** para que implemente lo siguiente:
   - Un nuevo atributo de tipo **LocalDateTime** con nombre **$ingreso**. Para usar la clase **LocalDateTime** deben importarla (no es nativa de PHP, sino parte de la librería **Brick\DateTime**). Docs: https://github.com/brick/date-time
+  - Agregar método setter para el atributo `$nombre`.
   - Implementar los métodos `serializar` y `deserializar` para devolver los atributos como arreglo asociativo.
 - Implementar la clase **JugadorDAO** para persistir y consultar datos de la base de datos:
   - Debe implementar la interface **DatoInterface**.
