@@ -2,6 +2,12 @@
 
 > Volver al [**Documento inicial**](README.md).
 
+# Configurar como ejecutables los archivos de sincronización de repo
+
+```sh
+chmod 755 configs/*.sh configs/*.bat
+```
+
 ## Operaciones útiles de SQL
 
 ### Formatear una fecha para que sea ISO-8601 válida
