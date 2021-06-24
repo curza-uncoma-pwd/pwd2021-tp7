@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 git fetch upstream
 git rebase upstream/main

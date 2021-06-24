@@ -8,6 +8,18 @@
 chmod 755 configs/*.sh configs/*.bat
 ```
 
+1. (Por única vez) Ejecutar el archivo de configuración del repo padre:
+
+```sh
+./configs/config_repo_padre
+```
+
+2. Ejecutar el comando de rebase:
+
+```sh
+./configs/rebase
+```
+
 ## Operaciones útiles de SQL
 
 ### Formatear una fecha para que sea ISO-8601 válida
