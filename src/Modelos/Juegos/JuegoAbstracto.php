@@ -3,7 +3,6 @@
 namespace Raiz\Modelos\Juegos;
 
 use Brick\DateTime\LocalDateTime;
-use Raiz\Auxiliadores\Caracteres;
 use Raiz\Auxiliadores\FechaHora;
 use Raiz\Modelos\Cubilete;
 use Raiz\Modelos\Juegos\Errores\JuegoError;
@@ -62,7 +61,7 @@ abstract class JuegoAbstracto extends ModeloBase
     $this->cubilete = new Cubilete(juego: $this);
     $this->jugadores = $jugadores;
 
-    $this->estado = self::SIN_INICIAR;
+    $this->estado = is_null($estado) ? self::SIN_INICIAR : $estado;
   }
 
   final public function cantidadDeDados(): int
@@ -86,7 +85,6 @@ abstract class JuegoAbstracto extends ModeloBase
   {
     return [
       'id' => $this->id(),
-      'tipo' => Caracteres::escapar(self::class),
       'estado' => $this->estado,
       'inicio' => FechaHora::serializar($this->inicio),
       'fin' => FechaHora::serializar($this->fin),
@@ -177,7 +175,7 @@ abstract class JuegoAbstracto extends ModeloBase
         codigo: JuegoError::ESTADO_CARGADO_EN_CREACION,
       );
     }
-    if ($estadoEsNulo) {
+    if ($estadoEsNulo || !is_null($id)) {
       return;
     }
     if ($estado === self::EN_PROGRESO) {

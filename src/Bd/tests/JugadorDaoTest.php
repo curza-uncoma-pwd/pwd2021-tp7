@@ -54,6 +54,7 @@ final class JugadorDaoTest extends TestCase
 
     JugadorDao::actualizar($antes);
 
+    /** @var Jugador */
     $despues = JugadorDao::buscarPorId(self::$id);
 
     $this->assertEquals($antes->nombre(), $despues->nombre());

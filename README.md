@@ -12,7 +12,7 @@ Todas las recomendaciones para manejar el trabajo las pueden encontrar en el arc
 - Verificar que los tests pasen.
 - Respetar las reglas definidas en la teoría respecto a los namespaces. Ignorar el uso correcto de mayúsculas y minúsculas será motivo para pedir rehacer el trabajo.
 - La nota del TP tendrá un valor aprobado/desaprobado que se tendrá en cuenta para la promoción de la materia.
-- Manejar bien los errores esperados.
+- Manejar bien los errores espereados.
 - Completar todos los objetivos del TP.
 
 ## Aspectos a considerar
@@ -45,15 +45,28 @@ Todas las recomendaciones para manejar el trabajo las pueden encontrar en el arc
 - Se agregaron los atributos `LocalDateTime $inicio` y `?LocalDateTime $fin` en `JuegoAbstracto`.
 - Se implementaron los métodos `validarEstado` y `validarFechas` que se encargan de asegurarse de que no se setean datos erróneos.
 
+## Actualizaciones
+
+### 2021-07-01
+
+- Se eliminó la clase `Raiz\Auxiliadores\Caracteres` siendo ésta innecesaria. La clase PDO se encarga automáticamente de escapar los caracteres, por lo que no hace falta que lo hagamos nosotros.
+- Se corrigieron dos bugs relacionados al atributo `$estado` de la clase `JuegoAbstracto`.
+- Se corrigió la firma del método `serializar` de la clase `Raiz\Auxiliadores\FechaHora`. Ahora devuelve `string` o `null`. La opción `null` se agregó dado que la fecha `fin` de un juego puede existir o no.
+- Se creó una nueva migración (ATENCIÓN porque es necesario correr `composer migrar` nuevamente) para que elimine la columna `id` de la tabla `participantes` por ser un dato innecesario.
+- Se corrigió la clase `JuegoError` al agregar las sentencias `break` que hacían falta para cortar la ejecución de cada caso del `switch`.
+
 ## Objetivos principales del práctico
 
 - Actualizar la clase **Jugador** para que implemente lo siguiente:
   - Un nuevo atributo de tipo **LocalDateTime** con nombre **$ingreso**. Para usar la clase **LocalDateTime** deben importarla (no es nativa de PHP, sino parte de la librería **Brick\DateTime**). Docs: https://github.com/brick/date-time
-  - Agregar método setter para el atributo `$nombre`.
   - Implementar los métodos `serializar` y `deserializar` para devolver los atributos como arreglo asociativo.
-- Implementar la clase **JugadorDAO** para persistir y consultar datos de la base de datos:
+- Implementar la clase **JugadorDao** para persistir y consultar datos de la base de datos:
   - Debe implementar la interface **DatoInterface**.
   - Debe pasar todos los tests.
+- Implementar la clase **GeneralaDao** para persistir y consultar datos de la base de datos para los juegos de la generala:
+  - Debe implementar la interface **DaoInterface**.
+  - Debe pasar todos los tests.
+  - Tener en cuenta que esta clase tendrá que pontencialmente consumir datos de las tablas `juegos`, `participantes` y `jugadores`.
 
 ## Objetivos secundarios
 

@@ -25,7 +25,7 @@ class FechaHora
    *
    * Es equivalente a `(string) $fecha`
    */
-  public static function serializar(LocalDateTime $fecha): string
+  public static function serializar(?LocalDateTime $fecha): ?string
   {
     return $fecha;
   }

@@ -50,6 +50,7 @@ final class Generala extends JuegoAbstracto
   {
     $datos = parent::serializar();
 
+    $datos['tipo'] = self::class;
     $datos['rondas'] = $this->rondas;
     $datos['rondaActual'] = $this->rondaActual;
 

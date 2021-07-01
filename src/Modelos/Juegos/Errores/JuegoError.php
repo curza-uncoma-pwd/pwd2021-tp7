@@ -65,6 +65,7 @@ class JuegoError extends Error
             "mínimo ({$juego->dadoValorMin()}) y máximo ({$juego->dadoValorMax()}).",
           code: $codigo,
         );
+        break;
       case self::ESTADO_CARGADO_EN_CREACION:
         parent::__construct(
           message: 'Se intentó setear un estado en un juego recién creado. ' .
@@ -72,16 +73,19 @@ class JuegoError extends Error
             'al reinstanciar desde la BD.',
           code: $codigo,
         );
+        break;
       case self::ESTADO_INICIAL_EN_PROGRESO:
         parent::__construct(
           message: 'Se intentó setear el estado de progreso en un juego recién creado.',
           code: $codigo,
         );
+        break;
       case self::CONFIGURACION_FECHAS:
         parent::__construct(
           message: "La configuración de fechas para el juego#{$juego->id()} es inválida.",
           code: $codigo,
         );
+        break;
       default:
         parent::__construct(
           message: "Acción {{$codigo}} desconocida.",
